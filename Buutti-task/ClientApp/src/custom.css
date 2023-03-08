@@ -16,3 +16,52 @@ code {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
+
+* {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form > label {
+    display: flex;
+    flex-direction: row;
+    margin: 0.125em 0;
+}
+
+form > label > span {
+    width: 5em;
+}
+
+form > label > input {
+    width: 10em;
+}
+
+form > div {
+    margin: 0.125em 0;
+}
+
+form > div > button {
+    margin: 0 0.25em 0 0;
+}
+
+textarea {
+    width: 15em;
+    height: 10em;
+    margin: 0.125em 0 0 0;
+    resize: none;
+}
+
+ul {
+    width: 15em;
+    list-style-type: none;
+    padding: 0 0.125em;
+}
+
+li {
+    margin: 0.125em 0;
+}

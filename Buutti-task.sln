@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Buutti-task", "Buutti-task\Buutti-task.csproj", "{947597A6-F691-42E3-B5D5-098CBF5CA6AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Buutti-task", "Buutti-task\Buutti-task.csproj", "{947597A6-F691-42E3-B5D5-098CBF5CA6AD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Buutti-task-library", "Buutti-task-library\Buutti-task-library.csproj", "{35B7154B-555B-4E52-A452-DC907BC478C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{947597A6-F691-42E3-B5D5-098CBF5CA6AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{947597A6-F691-42E3-B5D5-098CBF5CA6AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{947597A6-F691-42E3-B5D5-098CBF5CA6AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35B7154B-555B-4E52-A452-DC907BC478C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35B7154B-555B-4E52-A452-DC907BC478C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35B7154B-555B-4E52-A452-DC907BC478C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35B7154B-555B-4E52-A452-DC907BC478C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
