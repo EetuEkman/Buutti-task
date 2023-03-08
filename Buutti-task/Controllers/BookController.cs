@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Buutti_task_library;
+using Buutti_task_library.Models;
+using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -8,36 +11,84 @@ namespace Buutti_task.Controllers
     [ApiController]
     public class BookController : ControllerBase
     {
-        // GET: api/<BookController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private SqliteDataAccess dataAccess;
+
+        public BookController(IConfiguration configuration)
         {
-            return new string[] { "value1", "value2" };
+            dataAccess = new SqliteDataAccess(configuration);
         }
 
-        // GET api/<BookController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        // GET: api/<BookController>
+        [HttpGet]
+        public async Task<IActionResult> Get()
         {
-            return "value";
+            List<Book> books;
+
+            try
+            {
+                books = await dataAccess.GetBooks();
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+            }
+
+            var json = JsonSerializer.Serialize(books);
+
+            return Content(json, "application/json", System.Text.Encoding.UTF8);
         }
 
         // POST api/<BookController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> Post([FromBody] Book book)
         {
+            try
+            {
+                await dataAccess.SaveBook(book);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+            }
+
+            return Ok();
         }
 
-        // PUT api/<BookController>/5
+        // PUT api/<BookController>
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<IActionResult> Put([FromBody] Book book)
         {
+            if (book.Id is null)
+            {
+                return BadRequest("Book id is required.");
+            }
+
+            try
+            {
+                await dataAccess.UpdateBook(book);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+            }
+
+            return Ok();
         }
 
         // DELETE api/<BookController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
+            try
+            {
+                await dataAccess.DeleteBook(id);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+            }
+
+            return Ok();
         }
     }
 }
