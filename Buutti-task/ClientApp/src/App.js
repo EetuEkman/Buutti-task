@@ -1,12 +1,5 @@
 import React, { useEffect, useState } from "react";
-
-// import React, { Component } from 'react';
-// import { Route, Routes } from 'react-router-dom';
-// import AppRoutes from './AppRoutes';
-// import { Layout } from './components/Layout';
-
 import mergeBooks from "./MergeBooks";
-
 import './custom.css';
 
 // Project uses Create React App, store the API base url in .env file.
@@ -337,24 +330,3 @@ export default function App() {
         </div>
     )
 }
-
-/*
-
-export default class App extends Component {
-  static displayName = App.name;
-
-  render() {
-    return (
-      <Layout>
-        <Routes>
-          {AppRoutes.map((route, index) => {
-            const { element, ...rest } = route;
-            return <Route key={index} {...rest} element={element} />;
-          })}
-        </Routes>
-      </Layout>
-    );
-  }
-}
-
-*/
