@@ -55,7 +55,7 @@ namespace Buutti_task.Controllers
         }
 
         // PUT api/<BookController>
-        [HttpPut("{id}")]
+        [HttpPut]
         public async Task<IActionResult> Put([FromBody] Book book)
         {
             if (book.Id is null)
