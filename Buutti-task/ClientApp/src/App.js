@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import mergeBooks from "./MergeBooks";
 import './custom.css';
+import BookForm from "./components/BookForm";
+import BookButtons from "./components/BookButtons";
+import BookList from "./components/BookList";
+import ErrorDisplay from "./components/ErrorDisplay";
 
 // Project uses Create React App, store the API base url in .env file.
 
@@ -56,36 +60,6 @@ export default function App() {
 
     const [error, setError] = useState("");
 
-    function onTitleChange(event) {
-        let value = event.currentTarget.value;
-
-        let newBooks = [...books];
-
-        newBooks[bookIndex].title = value;
-
-        setBooks(books => newBooks);
-    }
-
-    function onAuthorChange(event) {
-        let value = event.currentTarget.value;
-
-        let newBooks = [...books];
-
-        newBooks[bookIndex].author = value;
-
-        setBooks(books => newBooks);
-    }
-
-    function onDescriptionChange(event) {
-        let value = event.currentTarget.value;
-
-        let newBooks = [...books];
-
-        newBooks[bookIndex].description = value;
-
-        setBooks(books => newBooks);
-    }
-
     async function getBooks() {
         if (isWorking) {
             return;
@@ -104,8 +78,8 @@ export default function App() {
         setIsWorking(isWorking => false);
     }
 
-    // Builds a new book object without id, serializes the object
-    // and sends it to API in HTTP POST body.
+    // Builds a new book object without an id, serializes the object
+    // and sends it to the API in a HTTP POST body.
 
     async function saveBook() {
         if (isWorking) {
@@ -237,36 +211,6 @@ export default function App() {
         setBookIndex(index => 0);
     }
 
-    function onSavePointerDown(event) {
-        saveBook();
-    }
-
-    function onBookPointerDown(event) {
-        let dataIndex = event.currentTarget.getAttribute("data-index");
-
-        let index = Number.parseInt(dataIndex);
-
-        if (Number.isNaN(index)) {
-            return;
-        }
-
-        if (index === bookIndex) {
-            setBookIndex(bookIndex => 0);
-
-            return;
-        }
-
-        setBookIndex(bookIndex => index);
-    }
-
-    function onUpdatePointerDown(event) {
-        updateBook();
-    }
-
-    function onDeletePointerDown(event) {
-        deleteBook();
-    }
-
     async function setStoredBooks() {
         sessionStorage.setItem(SESSION_STORAGE_KEYS.Books, JSON.stringify(books));
     }
@@ -285,48 +229,16 @@ export default function App() {
 
     return (
         <div>
-            <form onSubmit={(e) => e.preventDefault()}>
-                <label>
-                    <span>Title</span>
-                    <input onChange={onTitleChange} value={books[bookIndex].title} type="text"></input>
-                </label>
-                <label>
-                    <span>Author</span>
-
-                    <input onChange={onAuthorChange} value={books[bookIndex].author} type="text"></input>
-                </label>
-                <label>
-                    <span>Description</span>
-                    
-                    <textarea onChange={onDescriptionChange} value={books[bookIndex].description} type="text"></textarea>
-                </label>
-                <div>
-                    <button onPointerDown={onSavePointerDown}>Save new</button>
-                    <button onPointerDown={onUpdatePointerDown}>Save</button>
-                    <button onPointerDown={onDeletePointerDown}>Delete</button>
-                </div>
-            </form>
-            {
-                error.length > 0 ?
-                    <div>{error}</div>
-                    :
-                    null
-            }
+            <BookForm books={books} setBooks={setBooks} bookIndex={bookIndex}></BookForm>
+            <BookButtons saveBook={saveBook} updateBook={updateBook} deleteBook={deleteBook} isWorking={isWorking}></BookButtons>
+            <ErrorDisplay error={error}></ErrorDisplay>
             {
                 isWorking ?
                     <div>Working ..</div>
                     :
                     null
             }
-            <ul>
-                {
-                    // Don't render first element in the books collection
-
-                    // First element presents a unselected book.
-
-                    books.map((book, index) => index === 0 ? null : <li className={bookIndex === index ? "selected" : ""} onPointerDown={onBookPointerDown} data-index={index} key={index}>{book.author}: {book.title}</li>)
-                }
-            </ul>
+            <BookList books={books} bookIndex={bookIndex} setBookIndex={setBookIndex}></BookList>
         </div>
     )
 }

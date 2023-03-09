@@ -41,11 +41,11 @@ form > label > input {
     width: 10em;
 }
 
-form > div {
+.book-buttons {
     margin: 0.125em 0;
 }
 
-form > div > button {
+.book-buttons > button {
     margin: 0 0.25em 0 0;
 }
 
@@ -57,13 +57,16 @@ textarea {
 }
 
 ul {
-    width: 15em;
+    width: fit-content;
     list-style-type: none;
-    padding: 0.25em 0;
-    outline: 2px solid black;
+    padding: 0;
+    outline: 1px solid black;
 }
 
 li {
+    width: 15em;
+    display: flex;
+    flex-wrap: wrap;
     margin: 0.125em 0;
     padding: 0 0.25em;
 }
