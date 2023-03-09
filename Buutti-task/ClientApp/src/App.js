@@ -5,6 +5,7 @@ import BookForm from "./components/BookForm";
 import BookButtons from "./components/BookButtons";
 import BookList from "./components/BookList";
 import ErrorDisplay from "./components/ErrorDisplay";
+import FETCH_ERRORS from "./Constants/FetchErrors";
 
 // Project uses Create React App, store the API base url in .env file.
 
@@ -67,13 +68,26 @@ export default function App() {
 
         setIsWorking(isWorking => true);
 
-        let response = await fetch(URLS.FetchBooks);
+        try {
+            let response = await fetch(URLS.FetchBooks);
 
-        let fetchedBooks = await response.json();
+            if (!response.ok) {
+                setError(error => response.statusText);
+            }
 
-        let newBooks = mergeBooks(books, fetchedBooks);
+            let fetchedBooks = await response.json();
 
-        setBooks(books => newBooks);
+            let newBooks = mergeBooks(books, fetchedBooks);
+
+            setBooks(books => newBooks);
+        }
+        catch (exception) {
+            setError(error => FETCH_ERRORS.NetworkError);
+
+            setIsWorking(isWorking => false);
+
+            return;
+        }
 
         setIsWorking(isWorking => false);
     }
@@ -113,13 +127,26 @@ export default function App() {
             description: books[bookIndex].description
         };
 
-        let response = await fetch(URLS.SaveBook, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(book)
-        });
+        try {
+            let response = await fetch(URLS.SaveBook, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(book)
+            })
+
+            if (!response.ok) {
+                setError(error => response.statusText);
+            }
+        }
+        catch (exception) {
+            setError(error => FETCH_ERRORS.NetworkError);
+
+            setIsWorking(isWorking => false);
+
+            return;
+        }
 
         if (bookIndex === 0) {
             let newBooks = [...books];
@@ -172,13 +199,26 @@ export default function App() {
 
         let book = { ...books[bookIndex] };
 
-        let response = await fetch(URLS.UpdateBook, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(book)
-        });
+        try {
+            let response = await fetch(URLS.UpdateBook, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(book)
+            });
+
+            if (!response.ok) {
+                setError(error => response.statusText);
+            }
+        }
+        catch (exception) {
+            setError(error => FETCH_ERRORS.NetworkError);
+
+            setIsWorking(isWorking => false);
+
+            return;
+        }
 
         setIsWorking(isWorking => false);
     }
@@ -192,9 +232,22 @@ export default function App() {
 
         let id = books[bookIndex].id;
 
-        let response = await fetch(URLS.DeleteBook + id, {
-            method: "DELETE",
-        });
+        try {
+            let response = await fetch(URLS.DeleteBook + id, {
+                method: "DELETE",
+            });
+
+            if (!response.ok) {
+                setError(error => response.statusText);
+            }
+        }
+        catch (exception) {
+            setError(error => FETCH_ERRORS.NetworkError);
+
+            setIsWorking(isWorking => false);
+
+            return;
+        }
 
         // Remove the book at index.
 

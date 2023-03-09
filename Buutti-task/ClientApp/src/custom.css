@@ -42,6 +42,8 @@ form > label > input {
 }
 
 .book-buttons {
+    display: flex;
+    flex-wrap: wrap;
     margin: 0.125em 0;
 }
 
@@ -57,22 +59,25 @@ textarea {
 }
 
 ul {
+    min-width: 15em;
+    min-height: 10em;
     width: fit-content;
     list-style-type: none;
-    padding: 0;
-    outline: 1px solid black;
+    padding: 0.25em;
+    border: 1px solid black;
 }
 
 li {
     width: 15em;
     display: flex;
     flex-wrap: wrap;
-    margin: 0.125em 0;
-    padding: 0 0.25em;
+    gap: 0.25em;
 }
 
 .selected {
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
     background-color: lightgrey;
+}
+
+h1 {
+    font-size: 1em;
 }
