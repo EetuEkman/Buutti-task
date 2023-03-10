@@ -281,17 +281,21 @@ export default function App() {
     }, [books])
 
     return (
-        <div>
-            <BookForm books={books} setBooks={setBooks} bookIndex={bookIndex}></BookForm>
-            <BookButtons saveBook={saveBook} updateBook={updateBook} deleteBook={deleteBook} isWorking={isWorking}></BookButtons>
-            <ErrorDisplay error={error}></ErrorDisplay>
-            {
-                isWorking ?
-                    <div>Working ..</div>
-                    :
-                    null
-            }
-            <BookList books={books} bookIndex={bookIndex} setBookIndex={setBookIndex}></BookList>
+        <div className="app">
+            <div>
+                <BookForm books={books} setBooks={setBooks} bookIndex={bookIndex}></BookForm>
+                <BookButtons saveBook={saveBook} updateBook={updateBook} deleteBook={deleteBook} isWorking={isWorking}></BookButtons>
+            </div>
+            <div>
+                <BookList books={books} bookIndex={bookIndex} setBookIndex={setBookIndex}></BookList>
+                <ErrorDisplay error={error}></ErrorDisplay>
+                {
+                    isWorking ?
+                        <div>Working ..</div>
+                        :
+                        null
+                }
+            </div>
         </div>
     )
 }
