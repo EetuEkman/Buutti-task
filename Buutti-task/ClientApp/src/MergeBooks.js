@@ -1,4 +1,4 @@
-﻿// Merges missing books from the fetched books to the book state.
+// Merges missing books from the fetched books to the book state.
 
 export default function mergeBooks(bookState, fetchedBooks) {
     let ids = bookState.map(book => book.id);

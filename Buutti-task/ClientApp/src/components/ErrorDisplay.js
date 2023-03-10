@@ -9,7 +9,6 @@ export default function ErrorDisplay(props) {
                     name: FETCH_ERRORS.NetworkError,
                     description: "Please check your network connectivity."
                 }
-                break;
             default:
                 return {
                     name: error,
