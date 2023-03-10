@@ -1,4 +1,4 @@
-﻿const FETCH_ERRORS = {
+const FETCH_ERRORS = {
     "NetworkError": "Network error"
 }
 

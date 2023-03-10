@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import FETCH_ERRORS from "../Constants/FetchErrors";
 
 export default function ErrorDisplay(props) {
