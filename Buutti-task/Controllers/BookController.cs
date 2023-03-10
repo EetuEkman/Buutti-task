@@ -1,6 +1,8 @@
 ﻿using Buutti_task_library;
 using Buutti_task_library.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -42,6 +44,11 @@ namespace Buutti_task.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Book book)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             try
             {
                 await dataAccess.SaveBook(book);
@@ -77,7 +84,7 @@ namespace Buutti_task.Controllers
 
         // DELETE api/<BookController>/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete([Required] int id)
         {
             try
             {
