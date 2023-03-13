@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "buutti-api", "buutti-api\buutti-api.csproj", "{CCBF3842-FDE1-4C14-8FBF-397F0208F47E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "buutti-library", "buutti-library\buutti-library.csproj", "{5E0A202A-CB60-4E03-9DC1-17328B239784}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CCBF3842-FDE1-4C14-8FBF-397F0208F47E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCBF3842-FDE1-4C14-8FBF-397F0208F47E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCBF3842-FDE1-4C14-8FBF-397F0208F47E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCBF3842-FDE1-4C14-8FBF-397F0208F47E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E0A202A-CB60-4E03-9DC1-17328B239784}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E0A202A-CB60-4E03-9DC1-17328B239784}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E0A202A-CB60-4E03-9DC1-17328B239784}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E0A202A-CB60-4E03-9DC1-17328B239784}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A4E27EA2-1E6B-46CB-B99A-5533238CCA2A}
+	EndGlobalSection
+EndGlobal

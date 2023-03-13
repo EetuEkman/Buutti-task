@@ -1,0 +1,5 @@
+FROM postgres
+ENV POSTGRES_USER Buutti
+ENV POSTGRES_PASSWORD YDOizrkFqk
+ENV POSTGRES_DB BookDb
+COPY books.sql /docker-entrypoint-initdb.d/

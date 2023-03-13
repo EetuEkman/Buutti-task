@@ -2,21 +2,23 @@ This is a repository for the solution to Buutti full-stack task.
 
 ## About
 
-The application is ASP.NET Core with React.js because of the requirement to start the app from the command line with a single command.
+The database is postgresql.
 
-I chose SQLite mainly for it's portability and ease of use. SQLite database provides all the required database functionality. The database file is included in the repo and included in the built app. This way the project doesn't depend on any installed database system but works right outside the box.
+The api is ASP.NET Core Web Api.
+
+The front end is React with TypeScript.
 
 ## Requirements
 
-* Node package manager for installing client side dependencies
-* .NET SDK (tested on 7.0.100) to build and host the project
-
-The app was tested on Windows 11.
+* PowerShell 7
+* Docker
 
 ## Running
 
-After cloning, go to Buutti-task/Buutti-task subfolder and run the command `dotnet run`.
+Make sure you have Docker properly installed and running.
 
-Then open your browser and navigate to https://localhost:7134
+After cloning, if on Windows go to project folder and use Unblock-File cmdlet to allow the script to run. `PS> Unblock-File .\setup.ps1`. 
 
-This should start and redirect to the user to the SPA development server.
+Start the script with command `PS> .\setup.ps1`.
+
+After the containers are up and running open your browser and navigate to http://localhost:5050.
