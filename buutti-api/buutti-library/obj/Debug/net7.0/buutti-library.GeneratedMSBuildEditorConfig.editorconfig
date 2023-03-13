@@ -8,4 +8,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = buutti_library
-build_property.ProjectDir = F:\general-projects\buutti-task\buutti-api\buutti-library\
+build_property.ProjectDir = f:\dotnet-projects\Buutti-task\buutti-api\buutti-library\

@@ -1,10 +1,12 @@
+#Requires -Version 7
+
 docker pull mcr.microsoft.com/dotnet/aspnet:7.0 | Out-Null;
 
 docker pull node:19-alpine | Out-Null;
 
 docker pull nginx:1.23-alpine | Out-Null;
 
-# Docker network to allow the containers to talk to each other.
+# Remove existing containers and images.
 
 docker stop buutti-db-container | Out-Null;
 
@@ -23,6 +25,8 @@ docker rmi buutti-db-image:1.0.0 | Out-Null;
 docker rmi buutti-api-image:1.0.0 | Out-Null;
 
 docker rmi buutti-client-image:1.0.0 | Out-Null;
+
+# Docker network to allow the containers to talk to each other.
 
 docker network rm buutti-network | Out-Null;
 
